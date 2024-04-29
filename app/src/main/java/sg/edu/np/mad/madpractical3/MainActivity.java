@@ -1,5 +1,6 @@
 package sg.edu.np.mad.madpractical3;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         TextView tvName = findViewById(R.id.tvName);
         TextView tvDescription = findViewById(R.id.tvDescription);
         Button btnFollow = findViewById(R.id.btnFollow);
+        Button btnMessage = findViewById(R.id.button3);
 
         int randomInt = getIntent().getIntExtra("RANDOM_INT", -1); // Default to -1 if not found
 
@@ -60,6 +62,14 @@ public class MainActivity extends AppCompatActivity {
                     user.followed = true;
                     Toast.makeText(MainActivity.this, "Unfollowed", Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+
+        btnMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MessageGroup.class);
+                startActivity(intent);
             }
         });
     }
