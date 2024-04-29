@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.util.Random;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,9 +34,16 @@ public class MainActivity extends AppCompatActivity {
         TextView tvDescription = findViewById(R.id.tvDescription);
         Button btnFollow = findViewById(R.id.btnFollow);
 
+        int randomInt = getIntent().getIntExtra("RANDOM_INT", -1); // Default to -1 if not found
+
+        if (randomInt != -1) {
+            // Display the user's name with the random number
+            tvName.setText("MAD " + randomInt);
+        } else {
+            tvName.setText(user.name); // Default name without a random number
+        }
 
         // Set the TextViews with the User's name, description and default button message
-        tvName.setText(user.name);
         tvDescription.setText(user.description);
         btnFollow.setText("Follow");
 
